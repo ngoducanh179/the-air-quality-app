@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios'
 import GetAirQuality from './components/GetAirQuality';
+import Navbar from './components/layout/Navbar';
 function App() {
   const [aq, SetAq] = useState({})
   const GetAQI = async (text) => {
@@ -9,11 +10,16 @@ function App() {
     SetAq(res.data)
     console.log(res.data)
   }
+  // const ClearData = () =>{
+  //   SetAq({})
+  // }
 
 
   return (
     <div className="App">
-      <GetAirQuality aq={aq} GetAQI={GetAQI} />
+      <Navbar/>
+      <GetAirQuality aq={aq} SetAq={SetAq} GetAQI={GetAQI} />
+      
     </div>
   );
 
